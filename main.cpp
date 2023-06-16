@@ -1,6 +1,7 @@
 #include "UserDataController.h"
 #include "GoodsDataController.h"
 #include "OperationRecorder.h"
+#include "MyExcept.h"
 string name;
 string password;
 User *now_user;
@@ -117,51 +118,56 @@ void Menu(bool is_admin, UserDataController &usercontroller) {
         cout << "<<          f.查询货物信息修改记录      " << endl;
         cout << "<<          0.退出登陆          " << endl;
         cout << "<<" << endl;
-        cout << ">>    等待输入：" ;
-        char t;
-        cin >> t;
-        system("cls");
-        switch(t) { 
-            case '1': 
-                goodscontroller.add_info(recorder, now_user->getname());
-                break;
-            case '2':
-                goodscontroller.modify_goodsinfo(recorder, now_user->getname());
-                break;
-            case '3':
-                goodscontroller.delete_info(recorder, now_user->getname());
-                break;
-            case '4':
-                goodscontroller.query_goodsinfo();
-                break;
-            case '5':
-                goodscontroller.show_list();
-                break;
-            case '6':
-                now_user->change_password();
-                break;
-            case '7':
-                if(is_admin)
-                    usercontroller.show_list();
-                break;
-            case '8':
-                if(is_admin)
-                    usercontroller.add_info();
-                break;
-            case '9':
-                if(is_admin)
-                    usercontroller.delete_info();
-                break;
-            case 'f':
-                    recorder.show_list();
-                break;
-            case 'F':
-                    recorder.show_list();
-                break;
-            case '0':
-                return;
-            default:
-                break;
+        try{
+            cout << ">>    等待输入：" ;
+            char t;
+            cin >> t;
+            system("cls");
+            switch(t) { 
+                case '1': 
+                    goodscontroller.add_info(recorder, now_user->getname());
+                    break;
+                case '2':
+                    goodscontroller.modify_goodsinfo(recorder, now_user->getname());
+                    break;
+                case '3':
+                    goodscontroller.delete_info(recorder, now_user->getname());
+                    break;
+                case '4':
+                    goodscontroller.query_goodsinfo();
+                    break;
+                case '5':
+                    goodscontroller.show_list();
+                    break;
+                case '6':
+                    now_user->change_password();
+                    break;
+                case '7':
+                    if(is_admin)
+                        usercontroller.show_list();
+                    break;
+                case '8':
+                    if(is_admin)
+                        usercontroller.add_info();
+                    break;
+                case '9':
+                    if(is_admin)
+                        usercontroller.delete_info();
+                    break;
+                case 'f':
+                        recorder.show_list();
+                    break;
+                case 'F':
+                        recorder.show_list();
+                    break;
+                case '0':
+                    return;
+                default:
+                    throw MyInputError();
+            }
+        }
+        catch(MyExcept &e) {
+            cout << e.getWhat() << "\n";
         }
         cout << "<<\n" << endl;
         system("pause");

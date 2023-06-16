@@ -1,4 +1,5 @@
 #include "GoodsDataController.h"
+#include "MyExcept.h"
 const char* filename1 = "GoodsData.txt";			//货物信息文件
 GoodsDataController::GoodsDataController() {  //用户链表的初始化，建立头结点,并从文件中读取信息建立链表
     head = new Goods;
@@ -194,9 +195,7 @@ void GoodsDataController::modify_goodsinfo(OperationRecorder &recorder, string n
     }
     else {
         if(t != '0')
-        cout  <<  "<<    ★ 输入异常！！！ ★" << endl; 
-        cout << "<<" << endl;
-        return;
+        throw MyInputError();
     }
     cpy = *p;
     cout << "<<    ★    请选择修改方式  ★：" << endl; 
@@ -252,8 +251,7 @@ void GoodsDataController::modify_goodsinfo(OperationRecorder &recorder, string n
             cout  <<  ">>    ★   请输入货物新出库件数 ★：";
             cin >> num;
             if(p->count < num) {
-                cout  <<  "<<    ★     成功失败：货物库存不足    ★"<< endl;
-                break;
+                throw MyMinusError();
             }
             p->count -= num;
             if(cpy-(*p)){
@@ -363,8 +361,7 @@ void GoodsDataController::query_goodsinfo() {
         case '0':
             break;
         default:
-            cout << "<<    ★   选择错误的数字！ ★" << endl; 
-            break;
+            throw MyInputError();
     } 
 }
 
@@ -390,8 +387,7 @@ void GoodsDataController::show_list() const {
         return;
     }
     else {
-        cout << "<<    输入错误！即将返回主菜单" << endl;
-        return;
+        throw MyInputError();
     }
     char k;
     cout << "<< " <<endl;
@@ -442,7 +438,7 @@ void GoodsDataController::show_list() const {
         }
     }
     else {
-        cout << "<<    输入错误！即将返回主菜单" << endl;
+        throw MyInputError();
     }
     return;
 }
