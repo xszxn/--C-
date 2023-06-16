@@ -2,8 +2,8 @@
 #define DATACONTROLLER_H
 class DataController {
     public:
-        virtual void file_read() = 0;  //è¯»å–æ–‡ä»¶ä¸­çš„ä¿¡æ¯å»ºç«‹é“¾è¡¨
-        virtual void file_write() = 0;  //å°†é“¾è¡¨ä¸­çš„ä¿¡æ¯å†™åˆ°æ–‡ä»¶ä¸­
-        virtual void show_list() const = 0;  //å±•ç¤ºé“¾è¡¨ä¸­çš„æ‰€æœ‰ä¿¡æ¯
+        virtual void file_read() = 0;  //¶ÁÈ¡ÎÄ¼şÖĞµÄĞÅÏ¢½¨Á¢Á´±í
+        virtual void file_write() = 0;  //½«Á´±íÖĞµÄĞÅÏ¢Ğ´µ½ÎÄ¼şÖĞ
+        virtual void show_list() const = 0;  //Õ¹Ê¾Á´±íÖĞµÄËùÓĞĞÅÏ¢
 };
 #endif

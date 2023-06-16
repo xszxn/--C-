@@ -199,7 +199,7 @@ void GoodsDataController::modify_goodsinfo(OperationRecorder &recorder, string n
         return;
     }
     cpy = *p;
-    cout << ">>    ★    请选择修改方式  ★：" << endl; 
+    cout << "<<    ★    请选择修改方式  ★：" << endl; 
     cout << "<<      1.修改货物单价      " << endl;
     cout << "<<      2.货物入库      " << endl;
     cout << "<<      3.货物出库      " << endl;
@@ -346,7 +346,7 @@ void GoodsDataController::query_goodsinfo() {
             }
             break;
         case '4':
-            cout << ">>    ★    请输选择筛选方式  ★：" << endl; 
+            cout << "<<    ★    请输选择筛选方式  ★：" << endl; 
             cout << "<<      1.低于      " << endl;
             cout << "<<      2.高于      " << endl;
             cout << "<<      3.选择区间      " << endl;
@@ -360,6 +360,8 @@ void GoodsDataController::query_goodsinfo() {
                 cout << "<<    ★   选择错误的数字！ ★" << endl; 
             }
             break;
+        case '0':
+            break;
         default:
             cout << "<<    ★   选择错误的数字！ ★" << endl; 
             break;
@@ -368,7 +370,7 @@ void GoodsDataController::query_goodsinfo() {
 
 void GoodsDataController::show_list() const {
     Sorter u(head);
-    cout << ">>    ★    请输选择排序方式  ★：" << endl; 
+    cout << "<<    ★    请输选择排序方式  ★：" << endl; 
     cout << "<<      1.按照货物编号排序      " << endl;
     cout << "<<      2.按照货物单价排序      " << endl;
     cout << "<<      3.按照货物数量排序      " << endl;
@@ -379,7 +381,7 @@ void GoodsDataController::show_list() const {
     cout << ">>    等待输入：" ;
     cin >> t;
     if(t == '1' || t == '2' || t == '3' || t == '4') {
-        cout << ">>    ★    请输选择排序顺序  ★：" << endl; 
+        cout << "<<    ★    请输选择排序顺序  ★：" << endl; 
         cout << "<<      1.按照升序排序      " << endl;
         cout << "<<      2.按照降序排序      " << endl;
         cout << "<<      0.返回菜单          " << endl;

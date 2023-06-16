@@ -1,6 +1,5 @@
-5
-4
+3
+3
 1 admin admin admin
-3 koala koala user
-4 kop kop user
-5 cxz cxz user
+2 koala koala user
+3 staff1 staff1 user
